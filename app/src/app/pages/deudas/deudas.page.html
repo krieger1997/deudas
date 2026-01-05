@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis deudas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  @if (deudas$ | async; as deudas) {
+    @for (deuda of deudas; track $index) {
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <h2>{{ deuda.titulo }}</h2>
+            <p>Tipo: {{ deuda.tipo }}</p>
+            <p>Monto: {{ deuda.montoTotal }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    }
+
+
+
+
+  }@else {
+
+    <ion-spinner class="spinner-center"></ion-spinner>
+
+  }
+  
+
+
+  
+
+</ion-content>

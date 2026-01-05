@@ -7,6 +7,6 @@ import { provideIonicAngular } from '@ionic/angular/standalone';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes), provideIonicAngular({})
+    provideRouter(routes), provideIonicAngular({}), provideIonicAngular({})
   ]
 };
