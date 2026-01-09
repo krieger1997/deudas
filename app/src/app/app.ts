@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, IonRouterOutlet, IonApp],
+  imports: [ IonRouterOutlet, IonApp],
   templateUrl: './app.html',
   styleUrl: './app.css',
   providers:[

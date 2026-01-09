@@ -1,44 +1,90 @@
 import { Injectable } from '@angular/core';
 import { Deuda } from '../models/Deuda.model';
 import { BehaviorSubject } from 'rxjs';
+import { Persona } from '../models/Persona.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DeudaService {
   constructor() {
-    this.loadInitialData();
+    // setTimeout(() => {
+      this.loadInitialData();
+    // }, 3000);
   }
 
   private deudasSubject = new BehaviorSubject<Deuda[]>([]);
   deudas$ = this.deudasSubject.asObservable();
 
   private loadInitialData() {
+
+    const Persona1:Persona = {
+      id:'1',
+      nombre: 'Nico',
+      creacion: '2026-01-09'
+    };
+    const Persona2:Persona = {
+      id:'2',
+      nombre: 'Belen',
+      creacion: '2026-01-09'
+    };
+    const Persona3:Persona = {
+      id:'3',
+      nombre: 'CMR',
+      creacion: '2026-01-09'
+    };
+
+
     const mock: Deuda[] = [
       {
         id: '1',
         UsuarioId: 'user-1',
         tipo: 'DEBO',
-        titulo: 'Crédito banco',
-        montoTotal: 500000,
-        montoPagado: 150000,
-        // tipoInteres: 'SIMPLE',
-        // tasaInteres: 2.1,
-        fechaInicio: '2025-01-01',
-        fechaVencimiento: '2025-12-31',
-        estado: 'ACTIVA'
+        titulo: 'San josé Nico',
+        montoTotal: 8000,
+        montoPagado: 0,
+        fechaInicio: '2026-01-06',
+        fechaVencimiento: '2026-01-31',
+        estado: 'ACTIVA',
+        personaEntidad:Persona1
       },
       {
         id: '2',
         UsuarioId: 'user-1',
         tipo: 'ME_DEBE',
-        titulo: 'Préstamo a amigo',
-        montoTotal: 100000,
+        titulo: 'Taos Nico',
+        montoTotal: 7990,
         montoPagado: 0,
-        // tipoInteres: 'NONE',
-        fechaInicio: '2025-02-10',
-        estado: 'ACTIVA'
+        fechaInicio: '2026-01-09',
+        estado: 'ACTIVA',
+        personaEntidad:Persona1
+
+      },
+      {
+        id: '3',
+        UsuarioId: 'user-1',
+        tipo: 'ME_DEBE',
+        titulo: 'Taos Belen',
+        montoTotal: 4990,
+        montoPagado: 0,
+        fechaInicio: '2026-01-09',
+        estado: 'ACTIVA',
+        personaEntidad:Persona2
+
+      },
+      {
+        id: '3',
+        UsuarioId: 'user-1',
+        tipo: 'DEBO',
+        titulo: 'Taos Belen',
+        montoTotal: 3100,
+        montoPagado: 0,
+        fechaInicio: '2026-01-09',
+        estado: 'ACTIVA',
+        personaEntidad:Persona2
+
       }
+      //
     ];
 
     this.deudasSubject.next(mock);
@@ -47,7 +93,9 @@ export class DeudaService {
 
 
   getTodo(): Deuda[] {
+    // console.log(this.deudasSubject.value)
     return this.deudasSubject.value;
+    
   }
 
   getPorId(id: string): Deuda | undefined {

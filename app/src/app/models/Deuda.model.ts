@@ -1,3 +1,5 @@
+import { Persona } from "./Persona.model";
+
 export type DeudaTipo = 'DEBO' | 'ME_DEBE';
 export type DeudaEstado = 'ACTIVA' | 'PAGADA' | 'ATRASADA';
 // export type InterestType = 'NONE' | 'SIMPLE' | 'COMPUESTO';
@@ -21,4 +23,6 @@ export interface Deuda {
 
   estado: DeudaEstado;
   notas?: string;
+
+  personaEntidad: Persona
 }

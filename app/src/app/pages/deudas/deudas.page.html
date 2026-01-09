@@ -4,9 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="flexxxxxxxxxx">
 
-  @if (deudas$ | async; as deudas) {
+  <!-- @if (deudas$ | async; as deudas) {
     @for (deuda of deudas; track $index) {
       <ion-list>
         <ion-item>
@@ -27,8 +27,31 @@
     <ion-spinner class="spinner-center"></ion-spinner>
 
   }
-  
+   -->
 
+
+   <ion-card class="m-2  ">
+    <ion-card-header>
+      <ion-card-title>
+        DEBO
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      $ {{deudaDebo}}
+    </ion-card-content>
+   </ion-card>
+
+   
+   <ion-card class="m-2 ">
+    <ion-card-header>
+      <ion-card-title>
+        ME DEBEN
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      $ {{deudaMeDeben}}
+    </ion-card-content>
+   </ion-card>
 
   
 
