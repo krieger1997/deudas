@@ -132,6 +132,18 @@ export class DeudaService {
       .filter(d => d.tipo === 'ME_DEBE' && d.estado !== 'PAGADA')
       .reduce((acc, d) => acc + (d.montoTotal - d.montoPagado), 0);
   }
+  
+  getCantidadDebo(): number {
+    return this.getTodo()
+      .filter(d => d.tipo === 'DEBO' && d.estado !== 'PAGADA')
+      .length;
+  }
+
+  getCantidadMeDebe(): number {
+    return this.getTodo()
+      .filter(d => d.tipo === 'ME_DEBE' && d.estado !== 'PAGADA')
+      .length;
+  }
 
   marcarPagado(id: string) {
     const debt = this.getPorId(id);

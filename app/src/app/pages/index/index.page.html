@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar class="p-2">
+    <ion-title>Mis deudas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="">
+  <div class="grid grid-cols-2 gap-4 p-4 content-center h-40">
+
+    <ion-card class="p-2  w-35   " color="success" (click)="detalleDebo()">
+     <ion-card-header>
+       <ion-card-title>
+         DEBO
+       </ion-card-title>
+     </ion-card-header>
+     <ion-card-content>
+       $ {{deudaDebo}}
+       <ion-card-subtitle>{{cantidadDebo}} deudas</ion-card-subtitle>
+     </ion-card-content>
+    </ion-card>
+ 
+    
+    <ion-card class="p-2 w-35  " color="danger" (click)="detalleMeDeben()">
+     <ion-card-header>
+       <ion-card-title>
+         ME DEBEN
+       </ion-card-title>
+     </ion-card-header>
+     <ion-card-content>
+       $ {{deudaMeDeben}}
+        <ion-card-subtitle>{{cantidadMeDeben}} deudas</ion-card-subtitle>
+     </ion-card-content>
+    </ion-card>
+  </div>
+
+  
+
+</ion-content>

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'deudas', pathMatch: 'full' },
-    {path: 'deudas', loadComponent: () => import('./pages/deudas/deudas.page').then(m => m.DeudasPage) }
+    { path: '',loadComponent: () => import('./pages/index/index.page').then(m => m.IndexPage) },
+    // { path: 'index', loadComponent: () => import('./pages/deudas/deudas.page').then(m => m.DeudasPage) }
 ];

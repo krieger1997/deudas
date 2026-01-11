@@ -7,26 +7,44 @@ import { Deuda } from '../../models/Deuda.model';
 import { DeudaService } from '../../services/deudaService';
 
 @Component({
-  selector: 'app-deudas',
-  templateUrl: './deudas.page.html',
-  styleUrls: ['./deudas.page.css'],
+  selector: 'app-index',
+  templateUrl: './index.page.html',
+  styleUrls: ['./index.page.css'],
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCardHeader, IonCardTitle, IonCard, IonCardContent, IonCardSubtitle]
 })
-export class DeudasPage implements OnInit {
+export class IndexPage implements OnInit {
 
+  deudaDebo: number = 0;
+  deudaMeDeben: number = 0;
+  cantidadDebo: number = 0;
+  cantidadMeDeben: number = 0;
+  deudas$!: Observable<Deuda[]>;
   constructor(private deudaService: DeudaService) {
 
-    
+    this.deudas$ = this.deudaService.deudas$;
   }
 
 
 
   ngOnInit() {
-   
+    this.deudaDebo = this.deudaService.getTotalDebo();
+    this.deudaMeDeben = this.deudaService.getTotalMeDebe();
+    this.cantidadDebo = this.deudaService.getCantidadDebo();
+    this.cantidadMeDeben = this.deudaService.getCantidadMeDebe();
+    console.log("hola")
   }
 
 
 
 
+  detalleDebo() {
+    console.log("Detalle debo");
+    
+  }
+
+
+  detalleMeDeben() {
+
+  }
 }
