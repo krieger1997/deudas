@@ -40,10 +40,15 @@ Proyecto en desarrollo.
 
     WORKDIR /app
 
+    # Instala Ionic CLI
     RUN npm install -g @angular/cli @ionic/cli
 
+
     COPY entrypoint.sh /entrypoint.sh
-    RUN chmod +x /entrypoint.sh
+
+    # Corrige CRLF → LF
+    RUN sed -i 's/\r$//' /entrypoint.sh \
+        && chmod +x /entrypoint.sh
 
     EXPOSE 8100
 
@@ -52,36 +57,35 @@ Proyecto en desarrollo.
 ### docker-compose.yml
 
     services:
-      ionic:
+    ionic:
         build: .
         container_name: ionic-app
         working_dir: /app
         volumes:
-          - .:/app
+        - .:/app
         ports:
-          - "8100:8100"
+        - "8100:8100"
+        environment:
+        - CHOKIDAR_USEPOLLING=true
+        - CHOKIDAR_INTERVAL=2000
+        - WATCHPACK_POLLING=true
 
 ------------------------------------------------------------------------
 
 ## 🚀 Primer arranque
 
-### Construir y levantar
+### Construir 
 
-    docker compose up --build
+    docker compose build --no-cache
+
+### Construir 
+
+    docker compose up
 
 ### Entrar al contenedor
 
     docker compose exec ionic sh
 
-### Crear proyecto (una sola vez)
-
-    ng new app --style=css --skip-git --skip-tests
-    cd app
-    ng add @ionic/angular --skip-confirmation
-
-### Levantar la app
-
-    ionic serve --host=0.0.0.0
 
 Abrir: http://localhost:8100
 
